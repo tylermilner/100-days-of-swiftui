@@ -78,7 +78,8 @@ struct ContentView: View {
             scoreTitle = "Correct"
             currentScore += 1
         } else {
-            scoreTitle = "Wrong"
+            let tappedCountry = countries[number]
+            scoreTitle = "Wrong! That's the flag of \(tappedCountry)"
             currentScore -= 1
         }
         
