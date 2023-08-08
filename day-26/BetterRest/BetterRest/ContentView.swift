@@ -9,6 +9,8 @@ import CoreML
 import SwiftUI
 
 struct ContentView: View {
+    let numberOfCupsOptions = 1...20
+    
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
@@ -37,7 +39,12 @@ struct ContentView: View {
                 }
                 
                 Section("Daily coffee intake") {
-                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                    Picker("Coffee amount", selection: $coffeeAmount) {
+                        ForEach(numberOfCupsOptions, id: \.self) {
+                            Text($0 == 1 ? "1 cup" : "\($0) cups")
+                        }
+                    }
+                    .labelsHidden()
                 }
             }
             .navigationTitle("BetterRest")
