@@ -30,9 +30,7 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     
     private static let numberOfFlags = 3
-    @State private var flagRotationAnimationAmounts: [Double] = Array(repeating: 0.0, count: numberOfFlags)
-    @State private var flagOpacities: [Double] = Array(repeating: 1.0, count: numberOfFlags)
-    @State private var flagScales: [CGSize] = Array(repeating: CGSize(width: 1, height: 1), count: numberOfFlags)
+    @State private var tappedFlagNumber: Int? = nil
     
     var body: some View {
         ZStack {
@@ -60,13 +58,15 @@ struct ContentView: View {
                     
                     ForEach(0..<ContentView.numberOfFlags, id: \.self) { number in
                         Button {
-                            flagTapped(number)
+                            withAnimation {
+                                flagTapped(number)
+                            }
                         } label: {
                             FlagImage(country: countries[number])
                         }
-                        .rotation3DEffect(.degrees(flagRotationAnimationAmounts[number]), axis: (x: 0, y: 1, z: 0))
-                        .opacity(flagOpacities[number])
-                        .scaleEffect(flagScales[number])
+                        .rotation3DEffect(.degrees(number == tappedFlagNumber ? 360 : 0), axis: (x: 0, y: 1, z: 0))
+                        .opacity(tappedFlagNumber == nil ? 1.0 : (number != tappedFlagNumber ? 0.25 : 1.0))
+                        .scaleEffect(tappedFlagNumber == nil ? 1.0 : (number != tappedFlagNumber ? 0.5 : 1.0))
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -98,16 +98,7 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
-        withAnimation {
-            flagRotationAnimationAmounts[number] = 360
-            
-            for flagNumber in 0..<ContentView.numberOfFlags {
-                if flagNumber != number {
-                    flagOpacities[flagNumber] = 0.25
-                    flagScales[flagNumber] = CGSize(width: 0.5, height: 0.5)
-                }
-            }
-        }
+        tappedFlagNumber = number
         
         if number == correctAnswer {
             scoreTitle = "Correct"
@@ -124,18 +115,12 @@ struct ContentView: View {
             questionNumber += 1
             showingScore = true
         }
-        
-        flagRotationAnimationAmounts[number] = 0
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
-        
-        for flagNumber in 0..<ContentView.numberOfFlags {
-            flagOpacities[flagNumber] = 1
-            flagScales[flagNumber] = CGSize(width: 1, height: 1)
-        }
+        tappedFlagNumber = nil
     }
     
     func reset() {
