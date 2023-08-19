@@ -31,6 +31,7 @@ struct ContentView: View {
     
     private static let numberOfFlags = 3
     @State private var flagRotationAnimationAmounts: [Double] = Array(repeating: 0.0, count: numberOfFlags)
+    @State private var flagOpacities: [Double] = Array(repeating: 1.0, count: numberOfFlags)
     
     var body: some View {
         ZStack {
@@ -63,6 +64,7 @@ struct ContentView: View {
                             FlagImage(country: countries[number])
                         }
                         .rotation3DEffect(.degrees(flagRotationAnimationAmounts[number]), axis: (x: 0, y: 1, z: 0))
+                        .opacity(flagOpacities[number])
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -96,6 +98,12 @@ struct ContentView: View {
     func flagTapped(_ number: Int) {
         withAnimation {
             flagRotationAnimationAmounts[number] = 360
+            
+            for flagNumber in 0..<ContentView.numberOfFlags {
+                if flagNumber != number {
+                    flagOpacities[flagNumber] = 0.25
+                }
+            }
         }
         
         if number == correctAnswer {
@@ -120,6 +128,10 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        
+        for flagNumber in 0..<ContentView.numberOfFlags {
+            flagOpacities[flagNumber] = 1
+        }
     }
     
     func reset() {
