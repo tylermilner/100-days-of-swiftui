@@ -32,6 +32,7 @@ struct ContentView: View {
     private static let numberOfFlags = 3
     @State private var flagRotationAnimationAmounts: [Double] = Array(repeating: 0.0, count: numberOfFlags)
     @State private var flagOpacities: [Double] = Array(repeating: 1.0, count: numberOfFlags)
+    @State private var flagScales: [CGSize] = Array(repeating: CGSize(width: 1, height: 1), count: numberOfFlags)
     
     var body: some View {
         ZStack {
@@ -65,6 +66,7 @@ struct ContentView: View {
                         }
                         .rotation3DEffect(.degrees(flagRotationAnimationAmounts[number]), axis: (x: 0, y: 1, z: 0))
                         .opacity(flagOpacities[number])
+                        .scaleEffect(flagScales[number])
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -102,6 +104,7 @@ struct ContentView: View {
             for flagNumber in 0..<ContentView.numberOfFlags {
                 if flagNumber != number {
                     flagOpacities[flagNumber] = 0.25
+                    flagScales[flagNumber] = CGSize(width: 0.5, height: 0.5)
                 }
             }
         }
@@ -131,6 +134,7 @@ struct ContentView: View {
         
         for flagNumber in 0..<ContentView.numberOfFlags {
             flagOpacities[flagNumber] = 1
+            flagScales[flagNumber] = CGSize(width: 1, height: 1)
         }
     }
     
