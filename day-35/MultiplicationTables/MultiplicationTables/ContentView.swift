@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MultiplicationQuestion {
+struct Question {
     let firstNumber: Int
     let secondNumber: Int
     
@@ -24,7 +24,7 @@ struct MultiplicationQuestion {
     }
 }
 
-extension MultiplicationQuestion: Identifiable {
+extension Question: Identifiable {
     var id: String {
         "\(firstNumber)x\(secondNumber)"
     }
@@ -40,8 +40,8 @@ struct ContentView: View {
     private static let numberOfQuestionsOptions = [5, 10, 20]
     @State private var numberOfQuestions = numberOfQuestionsOptions[0]
     
-    @State private var questions: [MultiplicationQuestion] = []
-    @State private var currentQuestion = 0
+    @State private var questions: [Question] = []
+    @State private var questionNumber = 0
     
     @State private var answer = ""
     @State private var correctAnswers = 0
@@ -73,9 +73,10 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 
-                Text(questions[currentQuestion].question)
+                Text(questions[questionNumber].question)
                 
                 TextField("Answer", text: $answer)
+                    .keyboardType(.numberPad)
                 
                 Button("Submit", action: submitAnswer)
                 
@@ -100,7 +101,7 @@ struct ContentView: View {
             let firstNumber = generateRandomNumber()
             let secondNumber = generateRandomNumber()
             
-            return MultiplicationQuestion(firstNumber: firstNumber, secondNumber: secondNumber)
+            return Question(firstNumber: firstNumber, secondNumber: secondNumber)
         }
         
         // Start the game
@@ -115,7 +116,7 @@ struct ContentView: View {
     }
     
     private func submitAnswer() {
-        let question = questions[currentQuestion]
+        let question = questions[questionNumber]
         
         if Int(answer) == question.answer {
             correctAnswers += 1
@@ -129,11 +130,11 @@ struct ContentView: View {
     }
     
     private func nextQuestion() {
-        if currentQuestion == questions.count - 1 {
+        if questionNumber == questions.count - 1 {
             showingFinalScore = true
         } else {
             answer = ""
-            currentQuestion += 1
+            questionNumber += 1
         }
     }
     
@@ -141,7 +142,7 @@ struct ContentView: View {
         showingSettings = true
         correctAnswers = 0
         questions = []
-        currentQuestion = 0
+        questionNumber = 0
         answer = ""
         resultTitle = ""
         resultMessage = ""
