@@ -11,6 +11,7 @@
 		A480DEA42A92675C00E6C3B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DEA32A92675C00E6C3B5 /* ContentView.swift */; };
 		A480DEA62A92675F00E6C3B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A480DEA52A92675F00E6C3B5 /* Assets.xcassets */; };
 		A480DEA92A92675F00E6C3B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A480DEA82A92675F00E6C3B5 /* Preview Assets.xcassets */; };
+		A497C9072A946F2E00FD1295 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A497C9062A946F2E00FD1295 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		A480DEA32A92675C00E6C3B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A480DEA52A92675F00E6C3B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A480DEA82A92675F00E6C3B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A497C9062A946F2E00FD1295 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				A480DEA12A92675C00E6C3B5 /* MultiplicationTablesApp.swift */,
 				A480DEA32A92675C00E6C3B5 /* ContentView.swift */,
+				A497C9062A946F2E00FD1295 /* SettingsView.swift */,
 				A480DEA52A92675F00E6C3B5 /* Assets.xcassets */,
 				A480DEA72A92675F00E6C3B5 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A497C9072A946F2E00FD1295 /* SettingsView.swift in Sources */,
 				A480DEA42A92675C00E6C3B5 /* ContentView.swift in Sources */,
 				A480DEA22A92675C00E6C3B5 /* MultiplicationTablesApp.swift in Sources */,
 			);

@@ -33,13 +33,6 @@ extension Question: Identifiable {
 struct ContentView: View {
     @State private var showingSettings = true
     
-    private static let minimumTableOption = 2
-    private static let maximumTableOption = 12
-    @State private var maximumTable = minimumTableOption
-    
-    private static let numberOfQuestionsOptions = [5, 10, 20]
-    @State private var numberOfQuestions = numberOfQuestionsOptions[0]
-    
     @State private var questions: [Question] = []
     @State private var questionNumber = 0
     
@@ -52,23 +45,7 @@ struct ContentView: View {
     
     var body: some View {
         if showingSettings {
-            NavigationView {
-                Form {
-                    Section("Settings") {
-                        Stepper("Tables up to...\(maximumTable)", value: $maximumTable, in: ContentView.minimumTableOption...ContentView.maximumTableOption)
-                        
-                        Picker("Number of questions", selection: $numberOfQuestions) {
-                            ForEach(ContentView.numberOfQuestionsOptions, id: \.self) {
-                                Text("\($0) questions")
-                            }
-                        }
-                    }
-                }
-                .navigationTitle("Multiplication Tables")
-                .toolbar {
-                    Button("Start", action: start)
-                }
-            }
+            SettingsView(startGameBlock: start)
         } else {
             VStack {
                 Spacer()
@@ -95,11 +72,11 @@ struct ContentView: View {
         }
     }
     
-    private func start() {
+    private func start(maximumTable: Int, numberOfQuestions: Int) {
         // Generate questions
         self.questions = (0..<numberOfQuestions).map { _ in
-            let firstNumber = generateRandomNumber()
-            let secondNumber = generateRandomNumber()
+            let firstNumber = generateRandomNumber(upTo: maximumTable)
+            let secondNumber = generateRandomNumber(upTo: maximumTable)
             
             return Question(firstNumber: firstNumber, secondNumber: secondNumber)
         }
@@ -108,9 +85,9 @@ struct ContentView: View {
         showingSettings = false
     }
     
-    private func generateRandomNumber() -> Int {
+    private func generateRandomNumber(upTo max: Int) -> Int {
         let lowerBound = 1
-        let upperBound = maximumTable
+        let upperBound = max
         
         return Int.random(in: lowerBound...upperBound)
     }
