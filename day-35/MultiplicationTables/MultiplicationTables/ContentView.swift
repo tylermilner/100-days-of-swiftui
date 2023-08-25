@@ -7,29 +7,6 @@
 
 import SwiftUI
 
-struct Question {
-    let firstNumber: Int
-    let secondNumber: Int
-    
-    var question: String {
-        "What is \(firstNumber) x \(secondNumber)?"
-    }
-    
-    var answer: Int {
-        firstNumber * secondNumber
-    }
-    
-    var answerDescription: String {
-        "\(firstNumber) x \(secondNumber) = \(answer)"
-    }
-}
-
-extension Question: Identifiable {
-    var id: String {
-        "\(firstNumber)x\(secondNumber)"
-    }
-}
-
 struct ContentView: View {
     @State private var showingSettings = true
     
