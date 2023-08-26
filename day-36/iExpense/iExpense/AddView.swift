@@ -16,6 +16,7 @@ struct AddView: View {
     @State private var amount = 0.0
     
     let types = ["Business", "Personal"]
+    let currencyFormat: FloatingPointFormatStyle<Double>.Currency
     
     var body: some View {
         NavigationView {
@@ -28,7 +29,7 @@ struct AddView: View {
                     }
                 }
                 
-                TextField("Amount", value: $amount, format: .currency(code: "USD"))
+                TextField("Amount", value: $amount, format: currencyFormat)
                     .keyboardType(.decimalPad)
             }
             .navigationTitle("Add new expense")
@@ -45,6 +46,6 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(expenses: Expenses())
+        AddView(expenses: Expenses(), currencyFormat: .currency(code: "USD"))
     }
 }
