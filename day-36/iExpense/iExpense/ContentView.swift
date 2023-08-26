@@ -7,6 +7,31 @@
 
 import SwiftUI
 
+struct ExpenseAmount: ViewModifier {
+    let amount: Double
+    
+    func body(content: Content) -> some View {
+        var foregroundColor: Color
+        var font: Font
+        
+        switch amount {
+        case ..<10:
+            foregroundColor = .green
+            font = .title3
+        case 10..<100:
+            foregroundColor = .yellow
+            font = .title2
+        default:
+            foregroundColor = .red
+            font = .title
+        }
+        
+        return content
+            .foregroundColor(foregroundColor)
+            .font(font)
+    }
+}
+
 struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State private var showingAddExpense = false
@@ -27,8 +52,8 @@ struct ContentView: View {
                         Spacer()
                         
                         Text(item.amount, format: currencyFormat)
+                            .modifier(ExpenseAmount(amount: item.amount))
                     }
-                    
                 }
                 .onDelete(perform: removeItems)
             }
