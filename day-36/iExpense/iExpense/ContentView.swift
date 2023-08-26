@@ -32,6 +32,26 @@ struct ExpenseAmount: ViewModifier {
     }
 }
 
+struct ExpenseView: View {
+    let item: ExpenseItem
+    let currencyFormat: FloatingPointFormatStyle<Double>.Currency
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(item.name)
+                    .font(.headline)
+                Text(item.type)
+            }
+            
+            Spacer()
+            
+            Text(item.amount, format: currencyFormat)
+                .modifier(ExpenseAmount(amount: item.amount))
+        }
+    }
+}
+
 struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State private var showingAddExpense = false
@@ -41,21 +61,19 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                        }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: currencyFormat)
-                            .modifier(ExpenseAmount(amount: item.amount))
+                Section("Personal") {
+                    ForEach(expenses.personalExpenses) { item in
+                        ExpenseView(item: item, currencyFormat: currencyFormat)
                     }
+                    .onDelete(perform: removePersonalItems)
                 }
-                .onDelete(perform: removeItems)
+                
+                Section("Business") {
+                    ForEach(expenses.businessExpenses) { item in
+                        ExpenseView(item: item, currencyFormat: currencyFormat)
+                    }
+                    .onDelete(perform: removeBusinessItems)
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -71,8 +89,33 @@ struct ContentView: View {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+    private func removePersonalItems(at offsets: IndexSet) {
+        removeItems(at: offsets, in: expenses.personalExpenses)
+    }
+    
+    private func removeBusinessItems(at offsets: IndexSet) {
+        removeItems(at: offsets, in: expenses.businessExpenses)
+    }
+    
+    private func removeItems(at offsets: IndexSet, in expensesSubset: [ExpenseItem]) {
+        let transformedOffsets = transformedOffsets(from: offsets, in: expensesSubset)
+        expenses.items.remove(atOffsets: transformedOffsets)
+    }
+    
+    private func transformedOffsets(from offsets: IndexSet, in expensesSubset: [ExpenseItem]) -> IndexSet {
+        // Transform the offsets to their appropriate positions in the main `items` array
+        var transformedOffsets = IndexSet()
+        
+        offsets.forEach { index in
+            let itemToRemove = expensesSubset[index]
+            if let itemIndexInExpenses = expenses.items.firstIndex(where: { $0.id == itemToRemove.id }) {
+                transformedOffsets.insert(itemIndexInExpenses)
+            } else {
+                fatalError("Unable to find \(itemToRemove) in main expenses array")
+            }
+        }
+        
+        return transformedOffsets
     }
 }
 
