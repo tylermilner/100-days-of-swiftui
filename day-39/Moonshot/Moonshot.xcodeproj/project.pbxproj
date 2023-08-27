@@ -16,6 +16,7 @@
 		A4E2B45B2A9BFD7100BF02F1 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B45A2A9BFD7100BF02F1 /* Astronaut.swift */; };
 		A4E2B45D2A9BFDC900BF02F1 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B45C2A9BFDC900BF02F1 /* Bundle-Decodable.swift */; };
 		A4E2B45F2A9C00D500BF02F1 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B45E2A9C00D500BF02F1 /* Mission.swift */; };
+		A4E2B4612A9C06CE00BF02F1 /* Color-Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B4602A9C06CE00BF02F1 /* Color-Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		A4E2B45A2A9BFD7100BF02F1 /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		A4E2B45C2A9BFDC900BF02F1 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		A4E2B45E2A9C00D500BF02F1 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		A4E2B4602A9C06CE00BF02F1 /* Color-Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A4E2B45A2A9BFD7100BF02F1 /* Astronaut.swift */,
 				A4E2B45E2A9C00D500BF02F1 /* Mission.swift */,
 				A4E2B45C2A9BFDC900BF02F1 /* Bundle-Decodable.swift */,
+				A4E2B4602A9C06CE00BF02F1 /* Color-Theme.swift */,
 				A4E2B4562A9BFD0000BF02F1 /* astronauts.json */,
 				A4E2B4572A9BFD0000BF02F1 /* missions.json */,
 				A4E2B44C2A9BEFE700BF02F1 /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E2B45B2A9BFD7100BF02F1 /* Astronaut.swift in Sources */,
+				A4E2B4612A9C06CE00BF02F1 /* Color-Theme.swift in Sources */,
 				A4E2B44B2A9BEFE600BF02F1 /* ContentView.swift in Sources */,
 				A4E2B4492A9BEFE600BF02F1 /* MoonshotApp.swift in Sources */,
 				A4E2B45F2A9C00D500BF02F1 /* Mission.swift in Sources */,
