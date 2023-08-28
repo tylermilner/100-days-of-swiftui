@@ -21,6 +21,8 @@
 		A4E2B4652A9C36BC00BF02F1 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B4642A9C36BC00BF02F1 /* AstronautView.swift */; };
 		A4E2B4672A9C41BB00BF02F1 /* MissionCrewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B4662A9C41BB00BF02F1 /* MissionCrewScrollView.swift */; };
 		A4E2B4692A9C431400BF02F1 /* MoonshotDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B4682A9C431400BF02F1 /* MoonshotDivider.swift */; };
+		A4E2B46B2A9C490400BF02F1 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B46A2A9C490400BF02F1 /* GridLayout.swift */; };
+		A4E2B46D2A9C497F00BF02F1 /* ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2B46C2A9C497F00BF02F1 /* ListLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		A4E2B4642A9C36BC00BF02F1 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 		A4E2B4662A9C41BB00BF02F1 /* MissionCrewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCrewScrollView.swift; sourceTree = "<group>"; };
 		A4E2B4682A9C431400BF02F1 /* MoonshotDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotDivider.swift; sourceTree = "<group>"; };
+		A4E2B46A2A9C490400BF02F1 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		A4E2B46C2A9C497F00BF02F1 /* ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 		A4E2B43C2A9BEFE600BF02F1 = {
 			isa = PBXGroup;
 			children = (
+				A4E2B46C2A9C497F00BF02F1 /* ListLayout.swift */,
+				A4E2B46A2A9C490400BF02F1 /* GridLayout.swift */,
 				A4E2B4472A9BEFE600BF02F1 /* Moonshot */,
 				A4E2B4462A9BEFE600BF02F1 /* Products */,
 			);
@@ -178,7 +184,9 @@
 				A4E2B4692A9C431400BF02F1 /* MoonshotDivider.swift in Sources */,
 				A4E2B45F2A9C00D500BF02F1 /* Mission.swift in Sources */,
 				A4E2B4672A9C41BB00BF02F1 /* MissionCrewScrollView.swift in Sources */,
+				A4E2B46D2A9C497F00BF02F1 /* ListLayout.swift in Sources */,
 				A4E2B45D2A9BFDC900BF02F1 /* Bundle-Decodable.swift in Sources */,
+				A4E2B46B2A9C490400BF02F1 /* GridLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
