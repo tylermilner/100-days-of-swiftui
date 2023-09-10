@@ -21,6 +21,7 @@ struct ContentView: View {
                         Text(activity.title)
                     }
                 }
+                .onDelete(perform: remoteItems)
             }
             .navigationTitle("Habit Tracker")
             .toolbar {
@@ -34,6 +35,12 @@ struct ContentView: View {
                 AddActivityView(activities: activities)
             }
         }
+    }
+}
+
+private extension ContentView {
+    func remoteItems(at offsets: IndexSet) {
+        activities.activities.remove(atOffsets: offsets)
     }
 }
 
