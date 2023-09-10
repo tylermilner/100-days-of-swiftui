@@ -7,61 +7,61 @@
 
 import SwiftUI
 
-struct Arrow: InsettableShape {
-    var insetAmount = 0.0
+struct ColorCyclingRectangle: View {
+    var amount = 0.0
+    var steps = 100
+    var gradientStart = 0.0
+    var gradientEnd = 1.0
     
-    var animatableData: Double {
-        get { insetAmount }
-        set { insetAmount = newValue }
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Rectangle()
+                    .inset(by: Double(value))
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                color(for: value, brightness: 1),
+                                color(for: value, brightness: 0.5)
+                            ]),
+                            startPoint: UnitPoint(x: gradientStart, y: gradientEnd),
+                            endPoint: UnitPoint(x: 1 - gradientStart, y: 1 - gradientEnd)
+                        ),
+                        lineWidth: 2
+                    )
+            }
+        }
+        .drawingGroup()
     }
     
-    // Draw the arrow
-    // Take into account `insetAmount` so that the arrow continues to fit inside of the rect when the line width changes
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(steps) + amount
         
-        let triangleHeight = (rect.height / 3)
-        let baseWidth = max(1, floor(rect.width / 10))
+        if targetHue > 1 {
+            targetHue -= 1
+        }
         
-        let baseMinX = rect.midX - (baseWidth / 2) + (insetAmount / 2)
-        let baseMaxX = rect.midX + (baseWidth / 2) - (insetAmount / 2)
-        
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY + insetAmount))
-        path.addLine(to: CGPoint(x: rect.maxX - insetAmount, y: triangleHeight - insetAmount))
-        path.addLine(to: CGPoint(x: baseMaxX, y: triangleHeight - insetAmount))
-        path.addLine(to: CGPoint(x: baseMaxX, y: rect.maxY - insetAmount))
-        path.addLine(to: CGPoint(x: baseMinX, y: rect.maxY - insetAmount))
-        path.addLine(to: CGPoint(x: baseMinX, y: triangleHeight - insetAmount))
-        path.addLine(to: CGPoint(x: rect.minX + insetAmount, y: triangleHeight - insetAmount))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + insetAmount))
-        
-        return path
-    }
-    
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var arrow = self
-        arrow.insetAmount += amount
-        return arrow
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
     }
 }
 
 struct ContentView: View {
-    @State private var arrowLineWidth = 2.0
+    @State private var colorCycle = 0.0
+    @State private var gradientStart = 0.0
+    @State private var gradientEnd = 1.0
     
     var body: some View {
         VStack {
-            Spacer()
-            
-            Arrow()
-                .strokeBorder(.blue, style: StrokeStyle(lineWidth: arrowLineWidth, lineCap: .round,lineJoin: .round))
-            
-            Button("Animate Line Width") {
-                withAnimation {
-                    arrowLineWidth = Double.random(in: 2...20)
-                }
+            VStack {
+                ColorCyclingRectangle(amount: colorCycle, gradientStart: gradientStart, gradientEnd: gradientEnd)
+                    .frame(width: 300, height: 300)
+                
+                Slider(value: $colorCycle)
+                
+                Slider(value: $gradientStart)
+                
+                Slider(value: $gradientEnd)
             }
-            
-            Spacer()
         }
     }
 }
