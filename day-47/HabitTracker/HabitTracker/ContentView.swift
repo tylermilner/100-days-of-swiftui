@@ -15,7 +15,11 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(activities.activities) { activity in
-                    Text(activity.title)
+                    NavigationLink {
+                        ActivityDetailView(activities: activities, activity: activity)
+                    } label: {
+                        Text(activity.title)
+                    }
                 }
             }
             .navigationTitle("Habit Tracker")
