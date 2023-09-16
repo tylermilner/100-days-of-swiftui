@@ -15,6 +15,7 @@
 		A4525CB82AB61057004B8C37 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4525CB72AB61057004B8C37 /* DataController.swift */; };
 		A4525CBA2AB6188D004B8C37 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4525CB92AB6188D004B8C37 /* AddBookView.swift */; };
 		A4525CBC2AB61C2E004B8C37 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4525CBB2AB61C2E004B8C37 /* RatingView.swift */; };
+		A4525CBE2AB621C4004B8C37 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4525CBD2AB621C4004B8C37 /* EmojiRatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		A4525CB72AB61057004B8C37 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A4525CB92AB6188D004B8C37 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		A4525CBB2AB61C2E004B8C37 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		A4525CBD2AB621C4004B8C37 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				A4525CA62AB60B30004B8C37 /* BookwormApp.swift */,
 				A4525CA82AB60B30004B8C37 /* ContentView.swift */,
+				A4525CBD2AB621C4004B8C37 /* EmojiRatingView.swift */,
 				A4525CBB2AB61C2E004B8C37 /* RatingView.swift */,
 				A4525CB92AB6188D004B8C37 /* AddBookView.swift */,
 				A4525CB42AB61007004B8C37 /* Bookworm.xcdatamodeld */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4525CA92AB60B30004B8C37 /* ContentView.swift in Sources */,
+				A4525CBE2AB621C4004B8C37 /* EmojiRatingView.swift in Sources */,
 				A4525CB82AB61057004B8C37 /* DataController.swift in Sources */,
 				A4525CB62AB61007004B8C37 /* Bookworm.xcdatamodeld in Sources */,
 				A4525CBC2AB61C2E004B8C37 /* RatingView.swift in Sources */,
