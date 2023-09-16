@@ -14,10 +14,10 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 3
-    @State private var genre = ""
+    @State private var genre = genres.first!
     @State private var review = ""
     
-    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
+    static let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
     
     var body: some View {
         NavigationView {
@@ -27,7 +27,7 @@ struct AddBookView: View {
                     TextField("Author's name", text: $author)
                     
                     Picker("Genre", selection: $genre) {
-                        ForEach(genres, id: \.self) {
+                        ForEach(Self.genres, id: \.self) {
                             Text($0)
                         }
                     }
@@ -54,9 +54,14 @@ struct AddBookView: View {
                         dismiss()
                     }
                 }
+                .disabled(!isFormValid)
             }
             .navigationTitle("Add Book")
         }
+    }
+    
+    var isFormValid: Bool {
+        !title.isEmpty && !author.isEmpty && !genre.isEmpty && !review.isEmpty && Array(1...5).contains(rating)
     }
 }
 
