@@ -16,12 +16,11 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
         List(fetchRequest, id: \.self) { item in
             self.content(item)
         }
-        
     }
     
     // Use @ViewBuilder to allow multiple views to be provided as 'content'
-    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
-        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+    init(filterKey: String, predicate: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
+        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K \(predicate) %@", filterKey, filterValue))
         self.content = content
     }
 }
