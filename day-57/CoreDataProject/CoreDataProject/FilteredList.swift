@@ -23,8 +23,8 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     }
     
     // Use @ViewBuilder to allow multiple views to be provided as 'content'
-    init(filterKey: String, predicate: Predicate, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
-        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K \(predicate) %@", filterKey, filterValue))
+    init(filterKey: String, predicate: Predicate, filterValue: String, sortDescriptors: [SortDescriptor<T>], @ViewBuilder content: @escaping (T) -> Content) {
+        _fetchRequest = FetchRequest<T>(sortDescriptors: sortDescriptors, predicate: NSPredicate(format: "%K \(predicate) %@", filterKey, filterValue))
         self.content = content
     }
 }
