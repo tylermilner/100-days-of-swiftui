@@ -9,6 +9,10 @@ import CoreData
 import SwiftUI
 
 struct FilteredList<T: NSManagedObject, Content: View>: View {
+    enum Predicate: String {
+        case beginsWith = "BEGINSWITH"
+    }
+    
     @FetchRequest var fetchRequest: FetchedResults<T>
     let content: (T) -> Content
     
@@ -19,7 +23,7 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     }
     
     // Use @ViewBuilder to allow multiple views to be provided as 'content'
-    init(filterKey: String, predicate: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
+    init(filterKey: String, predicate: Predicate, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
         _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K \(predicate) %@", filterKey, filterValue))
         self.content = content
     }
