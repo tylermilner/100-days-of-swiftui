@@ -42,3 +42,18 @@ extension CachedFriend {
 extension CachedFriend : Identifiable {
 
 }
+
+// MARK: - Custom Additions
+
+extension CachedFriend {
+    
+    public var wrappedName: String {
+        name ?? "Unknown Name"
+    }
+    
+    convenience init(friend: Friend, moc: NSManagedObjectContext) {
+        self.init(context: moc)
+        self.id = friend.id
+        self.name = friend.name
+    }
+}

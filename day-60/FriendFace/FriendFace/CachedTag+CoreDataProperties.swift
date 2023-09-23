@@ -41,3 +41,17 @@ extension CachedTag {
 extension CachedTag : Identifiable {
 
 }
+
+// MARK: - Custom Additions
+
+extension CachedTag {
+    
+    public var wrappedStringValue: String {
+        stringValue ?? "Unknown Tag"
+    }
+    
+    convenience init(stringValue: String, moc: NSManagedObjectContext) {
+        self.init(context: moc)
+        self.stringValue = stringValue
+    }
+}
