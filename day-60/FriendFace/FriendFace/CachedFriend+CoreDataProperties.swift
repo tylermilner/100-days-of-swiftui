@@ -47,8 +47,16 @@ extension CachedFriend : Identifiable {
 
 extension CachedFriend {
     
+    public var wrappedId: UUID {
+        id ?? UUID()
+    }
+    
     public var wrappedName: String {
         name ?? "Unknown Name"
+    }
+    
+    var friendValue: Friend {
+        Friend(id: wrappedId, name: wrappedName)
     }
     
     convenience init(friend: Friend, moc: NSManagedObjectContext) {

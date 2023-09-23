@@ -72,6 +72,10 @@ extension CachedUser : Identifiable {
 
 extension CachedUser {
     
+    public var wrappedId: UUID {
+        id ?? UUID()
+    }
+    
     public var wrappedName: String {
         name ?? "Unknown Name"
     }
@@ -104,6 +108,13 @@ extension CachedUser {
     public var friendsArray: [CachedFriend] {
         let set = friends as? Set<CachedFriend> ?? []
         return Array(set)
+    }
+    
+    var userValue: User {
+        let tags = tagsArray.map { $0.wrappedStringValue }
+        let friends = friendsArray.map { $0.friendValue }
+        
+        return User(id: wrappedId, isActive: isActive, name: wrappedName, age: Int(age), company: wrappedCompany, email: wrappedEmail, address: wrappedAddress, about: wrappedAbout, registered: wrappedRegistered, tags: tags, friends: friends)
     }
     
     convenience init(user: User, moc: NSManagedObjectContext) {

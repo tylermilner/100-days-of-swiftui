@@ -10,16 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
-    @State private var users: [User] = []
+    @State private var fetchedUsersFromNetwork = false
     
     var body: some View {
         NavigationView {
-            List(users) { user in
+            List(cachedUsers) { user in
                 NavigationLink {
-                    UserDetailView(user: user)
+                    UserDetailView(user: user.userValue)
                 } label: {
                     HStack {
-                        Text(user.name)
+                        Text(user.wrappedName)
                         
                         Spacer()
                         
@@ -31,19 +31,11 @@ struct ContentView: View {
             }
             .navigationTitle("Friend Face")
             .task {
-                print("\(cachedUsers.count) users fetched from Core Data")
-                print("\(users.count) users currently in memory")
+                print("\(cachedUsers.count) users fetched from Core Data cache")
+                print("Fetched users from network yet? - \(fetchedUsersFromNetwork)")
                 
-                if users.isEmpty {
+                if fetchedUsersFromNetwork == false {
                     await loadData()
-                    
-                    // Save the data to Core Data
-                    for user in users {
-                        // Write users to the in-memory Core Data store
-                        _ = CachedUser(user: user, moc: moc)
-                    }
-                    // Write the users to disk
-                    try? moc.save()
                 }
             }
         }
@@ -59,8 +51,21 @@ struct ContentView: View {
             decoder.dateDecodingStrategy = .iso8601
             
             let users = try decoder.decode([User].self, from: data)
-            self.users = users
-            print("Fetched \(users.count) users")
+            fetchedUsersFromNetwork = true
+            print("Fetched \(users.count) users from network")
+            
+            // Queue up Core Data work to the main thread to ensure the fetch request won't change under SwiftUI's feet
+            // Maybe not necessary? I wasn't actually able to reproduce any broken functionality or crashes when not using MainActor.run...
+            await MainActor.run {
+                // Save the data to Core Data
+                for user in users {
+                    // Write users to the in-memory Core Data store
+                    _ = CachedUser(user: user, moc: moc)
+                }
+                // Write the in-memory store to disk
+                try? moc.save()
+                print("Saved \(users.count) users to Core Data cache")
+            }
         } catch {
             print(error.localizedDescription)
         }
