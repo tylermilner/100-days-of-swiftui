@@ -28,9 +28,11 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Friend Face")
-        }
-        .task {
-            await loadData()
+            .task {
+                if users.isEmpty {
+                    await loadData()
+                }
+            }
         }
     }
     
