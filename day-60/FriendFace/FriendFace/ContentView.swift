@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var users: [User] = []
+    @Environment(\.managedObjectContext) var moc
+    @State private var users: [User] = []
     
     var body: some View {
         NavigationView {
