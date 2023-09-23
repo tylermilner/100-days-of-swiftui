@@ -8,7 +8,7 @@
 import Foundation
 
 struct User: Decodable, Identifiable {
-    let id: String
+    let id: UUID
     let isActive: Bool
     let name: String
     let age: Int

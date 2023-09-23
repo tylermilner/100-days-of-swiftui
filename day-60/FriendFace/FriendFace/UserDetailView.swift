@@ -71,9 +71,9 @@ struct UserDetailView: View {
 }
 
 #Preview {
-    let user = User(id: "123", isActive: false, name: "Test", age: 21, company: "Test Company", email: "test@example.com", address: "555 Test", about: "This is some information about the test user.", registered: Date(timeIntervalSince1970: 1695434825), tags: ["Test User", "Cool"], friends: [
-        Friend(id: "456", name: "Friend 1"),
-        Friend(id: "789", name: "Friend 2")
+    let user = User(id: UUID(), isActive: false, name: "Test", age: 21, company: "Test Company", email: "test@example.com", address: "555 Test", about: "This is some information about the test user.", registered: Date(timeIntervalSince1970: 1695434825), tags: ["Test User", "Cool"], friends: [
+        Friend(id: UUID(), name: "Friend 1"),
+        Friend(id: UUID(), name: "Friend 2")
     ])
     return UserDetailView(user: user)
 }
