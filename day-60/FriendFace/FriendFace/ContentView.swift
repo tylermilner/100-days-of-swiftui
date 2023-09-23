@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationView {
             List(users) { user in
                 NavigationLink {
-                    // destination
+                    UserDetailView(user: user)
                 } label: {
                     HStack {
                         Text(user.name)

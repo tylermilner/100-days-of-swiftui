@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4748BC02ABE7E5F003D2753 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4748BBF2ABE7E5F003D2753 /* UserDetailView.swift */; };
 		A4C069152AB93EB100D2951D /* FriendFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C069142AB93EB100D2951D /* FriendFaceApp.swift */; };
 		A4C069172AB93EB100D2951D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C069162AB93EB100D2951D /* ContentView.swift */; };
 		A4C069192AB93EB200D2951D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C069182AB93EB200D2951D /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4748BBF2ABE7E5F003D2753 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		A4C069112AB93EB100D2951D /* FriendFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C069142AB93EB100D2951D /* FriendFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFaceApp.swift; sourceTree = "<group>"; };
 		A4C069162AB93EB100D2951D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				A4C069142AB93EB100D2951D /* FriendFaceApp.swift */,
 				A4C069162AB93EB100D2951D /* ContentView.swift */,
+				A4748BBF2ABE7E5F003D2753 /* UserDetailView.swift */,
 				A4C069182AB93EB200D2951D /* Assets.xcassets */,
 				A4C0691A2AB93EB200D2951D /* Preview Content */,
 				A4C069222AB9441D00D2951D /* User.swift */,
@@ -146,6 +149,7 @@
 				A4C069172AB93EB100D2951D /* ContentView.swift in Sources */,
 				A4C069152AB93EB100D2951D /* FriendFaceApp.swift in Sources */,
 				A4C069232AB9441D00D2951D /* User.swift in Sources */,
+				A4748BC02ABE7E5F003D2753 /* UserDetailView.swift in Sources */,
 				A4C069252AB9442400D2951D /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
