@@ -10,15 +10,6 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="CachedTag" representedClassName="CachedTag" syncable="YES">
-        <attribute name="stringValue" optional="YES" attributeType="String"/>
-        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedUser" inverseName="tags" inverseEntity="CachedUser"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="stringValue"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="CachedUser" representedClassName="CachedUser" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String"/>
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -29,8 +20,8 @@
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="registered" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedFriend" inverseName="user" inverseEntity="CachedFriend"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedTag" inverseName="user" inverseEntity="CachedTag"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>

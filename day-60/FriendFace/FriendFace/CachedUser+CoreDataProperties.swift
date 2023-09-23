@@ -25,25 +25,8 @@ extension CachedUser {
     @NSManaged public var address: String?
     @NSManaged public var about: String?
     @NSManaged public var registered: Date?
-    @NSManaged public var tags: NSSet?
+    @NSManaged public var tags: String?
     @NSManaged public var friends: NSSet?
-
-}
-
-// MARK: Generated accessors for tags
-extension CachedUser {
-
-    @objc(addTagsObject:)
-    @NSManaged public func addToTags(_ value: CachedTag)
-
-    @objc(removeTagsObject:)
-    @NSManaged public func removeFromTags(_ value: CachedTag)
-
-    @objc(addTags:)
-    @NSManaged public func addToTags(_ values: NSSet)
-
-    @objc(removeTags:)
-    @NSManaged public func removeFromTags(_ values: NSSet)
 
 }
 
@@ -100,9 +83,8 @@ extension CachedUser {
         registered ?? Date(timeIntervalSince1970: 0)
     }
     
-    public var tagsArray: [CachedTag] {
-        let set = tags as? Set<CachedTag> ?? []
-        return Array(set)
+    public var tagsArray: [String] {
+        tags?.components(separatedBy: ",") ?? []
     }
     
     public var friendsArray: [CachedFriend] {
@@ -111,10 +93,9 @@ extension CachedUser {
     }
     
     var userValue: User {
-        let tags = tagsArray.map { $0.wrappedStringValue }
         let friends = friendsArray.map { $0.friendValue }
         
-        return User(id: wrappedId, isActive: isActive, name: wrappedName, age: Int(age), company: wrappedCompany, email: wrappedEmail, address: wrappedAddress, about: wrappedAbout, registered: wrappedRegistered, tags: tags, friends: friends)
+        return User(id: wrappedId, isActive: isActive, name: wrappedName, age: Int(age), company: wrappedCompany, email: wrappedEmail, address: wrappedAddress, about: wrappedAbout, registered: wrappedRegistered, tags: tagsArray, friends: friends)
     }
     
     convenience init(user: User, moc: NSManagedObjectContext) {
@@ -128,9 +109,7 @@ extension CachedUser {
         self.address = user.address
         self.about = user.about
         self.registered = user.registered
-        
-        let cachedTags = user.tags.map { CachedTag(stringValue: $0, moc: moc) }
-        self.tags = NSSet(array: cachedTags)
+        self.tags = user.tags.joined(separator: ",")
         
         let cachedFriends = user.friends.map { CachedFriend(friend: $0, moc: moc) }
         self.friends = NSSet(array: cachedFriends)
