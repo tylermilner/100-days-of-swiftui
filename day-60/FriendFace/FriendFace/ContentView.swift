@@ -11,13 +11,24 @@ struct ContentView: View {
     @State var users: [User] = []
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List(users) { user in
+                NavigationLink {
+                    // destination
+                } label: {
+                    HStack {
+                        Text(user.name)
+                        
+                        Spacer()
+                        
+                        Text(user.isActive ? "Active" : "Inactive")
+                            .font(.subheadline)
+                            .foregroundColor(user.isActive ? .green : .red)
+                    }
+                }
+            }
+            .navigationTitle("Friend Face")
         }
-        .padding()
         .task {
             await loadData()
         }

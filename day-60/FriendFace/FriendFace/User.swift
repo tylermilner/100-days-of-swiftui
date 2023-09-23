@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User: Decodable, Identifiable {
     let id: String
     let isActive: Bool
     let name: String
