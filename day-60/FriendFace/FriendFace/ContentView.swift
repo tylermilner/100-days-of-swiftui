@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
     @State private var users: [User] = []
     
     var body: some View {
@@ -30,8 +31,19 @@ struct ContentView: View {
             }
             .navigationTitle("Friend Face")
             .task {
+                print("\(cachedUsers.count) users fetched from Core Data")
+                print("\(users.count) users currently in memory")
+                
                 if users.isEmpty {
                     await loadData()
+                    
+                    // Save the data to Core Data
+                    for user in users {
+                        // Write users to the in-memory Core Data store
+                        _ = CachedUser(user: user, moc: moc)
+                    }
+                    // Write the users to disk
+                    try? moc.save()
                 }
             }
         }
