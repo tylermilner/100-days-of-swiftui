@@ -37,14 +37,18 @@ struct UserDetailView: View {
                 }
                 
                 Section("Tags") {
-                    HStack {
-                        ForEach(user.tags, id: \.self) { tag in
-                            ZStack {
-                                Capsule()
-                                    .foregroundColor(.gray)
-                                
-                                Text(tag)
-                                    .foregroundColor(.white)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(user.tags, id: \.self) { tag in
+                                ZStack {
+                                    Capsule()
+                                        .foregroundColor(.gray)
+                                        .frame(minWidth: 100)
+                                    
+                                    Text(tag)
+                                        .foregroundColor(.white)
+                                        .fixedSize()
+                                }
                             }
                         }
                     }
