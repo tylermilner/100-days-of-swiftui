@@ -9,9 +9,10 @@ import CoreImage
 import CoreImage.CIFilterBuiltins
 import SwiftUI
 
-// Wrapping a UIViewController in a SwiftUI view
+// How to save images to the user's photo library
 struct ContentView: View {
     @State private var image: Image?
+    @State private var inputImage: UIImage?
     @State private var showingImagePicker = false
     
     var body: some View {
@@ -23,12 +24,74 @@ struct ContentView: View {
             Button("Select Image") {
                 showingImagePicker = true
             }
+            
+            Button("Save Image") {
+                guard let inputImage = inputImage else { return }
+                
+                let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: inputImage)
+            }
         }
         .sheet(isPresented: $showingImagePicker, content: {
-            ImagePicker()
+            ImagePicker(image: $inputImage)
         })
+        .onChange(of: inputImage) { _ in loadImage() }
+    }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
     }
 }
+
+//// Using coordinators to manage SwiftUI view controllers
+//struct ContentView: View {
+//    @State private var image: Image?
+//    @State private var inputImage: UIImage?
+//    @State private var showingImagePicker = false
+//    
+//    var body: some View {
+//        VStack {
+//            image?
+//                .resizable()
+//                .scaledToFit()
+//            
+//            Button("Select Image") {
+//                showingImagePicker = true
+//            }
+//        }
+//        .sheet(isPresented: $showingImagePicker, content: {
+//            ImagePicker(image: $inputImage)
+//        })
+//        .onChange(of: inputImage) { _ in loadImage() }
+//    }
+//    
+//    func loadImage() {
+//        guard let inputImage = inputImage else { return }
+//        image = Image(uiImage: inputImage)
+//    }
+//}
+
+//// Wrapping a UIViewController in a SwiftUI view
+//struct ContentView: View {
+//    @State private var image: Image?
+//    @State private var showingImagePicker = false
+//    
+//    var body: some View {
+//        VStack {
+//            image?
+//                .resizable()
+//                .scaledToFit()
+//            
+//            Button("Select Image") {
+//                showingImagePicker = true
+//            }
+//        }
+//        .sheet(isPresented: $showingImagePicker, content: {
+//            ImagePicker()
+//        })
+//    }
+//}
 
 //// Integrating Core Image with SwiftUI
 //struct ContentView: View {
