@@ -15,6 +15,8 @@
 		A4EC75932AD1A67C00AA62B8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EC75922AD1A67C00AA62B8 /* Location.swift */; };
 		A4EC75952AD1AB1D00AA62B8 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EC75942AD1AB1D00AA62B8 /* EditView.swift */; };
 		A4EC75972AD1F67500AA62B8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EC75962AD1F67500AA62B8 /* Result.swift */; };
+		A4EC75992AD24A0600AA62B8 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EC75982AD24A0600AA62B8 /* ContentView-ViewModel.swift */; };
+		A4EC759B2AD24D6900AA62B8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EC759A2AD24D6900AA62B8 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		A4EC75922AD1A67C00AA62B8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A4EC75942AD1AB1D00AA62B8 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		A4EC75962AD1F67500AA62B8 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A4EC75982AD24A0600AA62B8 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		A4EC759A2AD24D6900AA62B8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +65,14 @@
 			children = (
 				A4CD2B6E2ACF9FED00AE03CC /* BucketListApp.swift */,
 				A4CD2B702ACF9FED00AE03CC /* ContentView.swift */,
+				A4EC75982AD24A0600AA62B8 /* ContentView-ViewModel.swift */,
 				A4EC75962AD1F67500AA62B8 /* Result.swift */,
 				A4EC75942AD1AB1D00AA62B8 /* EditView.swift */,
 				A4EC75922AD1A67C00AA62B8 /* Location.swift */,
 				A4CD2B722ACF9FEE00AE03CC /* Assets.xcassets */,
 				A4CD2B742ACF9FEE00AE03CC /* Preview Content */,
 				A4CD2B7C2ACFA4DE00AE03CC /* FileManager+Extensions.swift */,
+				A4EC759A2AD24D6900AA62B8 /* FileManager-DocumentsDirectory.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -154,6 +160,8 @@
 				A4EC75952AD1AB1D00AA62B8 /* EditView.swift in Sources */,
 				A4CD2B6F2ACF9FED00AE03CC /* BucketListApp.swift in Sources */,
 				A4EC75932AD1A67C00AA62B8 /* Location.swift in Sources */,
+				A4EC75992AD24A0600AA62B8 /* ContentView-ViewModel.swift in Sources */,
+				A4EC759B2AD24D6900AA62B8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				A4CD2B7D2ACFA4DE00AE03CC /* FileManager+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +298,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please authenticate yourself to unlock your places.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -319,7 +327,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please authenticate yourself to unlock your places.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
