@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A433D6852AD64A530005363B /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A433D6842AD64A530005363B /* EditView-ViewModel.swift */; };
 		A4CD2B6F2ACF9FED00AE03CC /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD2B6E2ACF9FED00AE03CC /* BucketListApp.swift */; };
 		A4CD2B712ACF9FED00AE03CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD2B702ACF9FED00AE03CC /* ContentView.swift */; };
 		A4CD2B732ACF9FEE00AE03CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4CD2B722ACF9FEE00AE03CC /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A433D6842AD64A530005363B /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 		A4CD2B6B2ACF9FED00AE03CC /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CD2B6E2ACF9FED00AE03CC /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		A4CD2B702ACF9FED00AE03CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				A4EC75982AD24A0600AA62B8 /* ContentView-ViewModel.swift */,
 				A4EC75962AD1F67500AA62B8 /* Result.swift */,
 				A4EC75942AD1AB1D00AA62B8 /* EditView.swift */,
+				A433D6842AD64A530005363B /* EditView-ViewModel.swift */,
 				A4EC75922AD1A67C00AA62B8 /* Location.swift */,
 				A4CD2B722ACF9FEE00AE03CC /* Assets.xcassets */,
 				A4CD2B742ACF9FEE00AE03CC /* Preview Content */,
@@ -160,6 +163,7 @@
 				A4EC75952AD1AB1D00AA62B8 /* EditView.swift in Sources */,
 				A4CD2B6F2ACF9FED00AE03CC /* BucketListApp.swift in Sources */,
 				A4EC75932AD1A67C00AA62B8 /* Location.swift in Sources */,
+				A433D6852AD64A530005363B /* EditView-ViewModel.swift in Sources */,
 				A4EC75992AD24A0600AA62B8 /* ContentView-ViewModel.swift in Sources */,
 				A4EC759B2AD24D6900AA62B8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				A4CD2B7D2ACFA4DE00AE03CC /* FileManager+Extensions.swift in Sources */,
