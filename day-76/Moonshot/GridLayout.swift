@@ -37,6 +37,7 @@ struct GridLayout: View {
                                 Text(mission.formattedLaunchDate)
                                     .font(.caption)
                                     .foregroundColor(.white.opacity(0.5))
+                                    .accessibilityLabel(mission.launchDate == nil ? "No launch date" : mission.formattedLaunchDate)
                             }
                             .padding(.vertical)
                             .frame(maxWidth: .infinity)

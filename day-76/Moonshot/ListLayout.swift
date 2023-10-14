@@ -29,6 +29,7 @@ struct ListLayout: View {
                             
                             Text(mission.formattedLaunchDate)
                                 .font(.subheadline)
+                                .accessibilityLabel(mission.launchDate == nil ? "No launch date" : mission.formattedLaunchDate)
                         }
                     }
                 }
