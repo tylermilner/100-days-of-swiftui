@@ -49,6 +49,9 @@ struct ExpenseView: View {
             Text(item.amount, format: currencyFormat)
                 .modifier(ExpenseAmount(amount: item.amount))
         }
+        .accessibilityElement()
+        .accessibilityLabel("\(item.name): \(currencyFormat.format(item.amount))")
+        .accessibilityHint(item.type)
     }
 }
 
