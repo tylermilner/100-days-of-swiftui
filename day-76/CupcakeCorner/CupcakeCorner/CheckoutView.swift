@@ -25,8 +25,10 @@ struct CheckoutView: View {
                         .scaledToFit()
                 } placeholder: {
                     ProgressView()
+                        .accessibilityHidden(true)
                 }
                 .frame(height: 233) // Reserve known image height ahead of time to keep height from jumping around
+                .accessibilityHidden(true)
                 
                 Text("Your total is \(orderData.order.cost, format: .currency(code: "USD"))")
                     .font(.title)
