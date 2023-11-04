@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var friends = Friends()
+    
     @State private var showingAddFriendAlert = false
     @State private var name: String = ""
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
-    
-    @State private var friends: [Friend] = [].sorted()
     
     var body: some View {
         NavigationView {
@@ -23,11 +23,22 @@ struct ContentView: View {
                     Text("No friends yet 😔")
                 } else {
                     List {
-                        ForEach(friends) { friend in
+                        ForEach(friends.friends) { friend in
+                            let friendImage = friends.image(for: friend)
+                            
                             NavigationLink {
-                                FriendDetailView(friend: friend)
+                                FriendDetailView(friend: friend, image: friendImage)
                             } label: {
-                                Text(friend.name)
+                                HStack {
+                                    if let friendImage = friendImage {
+                                        Image(uiImage: friendImage)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(maxWidth: 50, maxHeight: 50)
+                                    }
+                                    
+                                    Text(friend.name)
+                                }
                             }
                         }
                         .onDelete(perform: removeItems)
@@ -64,15 +75,15 @@ struct ContentView: View {
 
 private extension ContentView {
     func imageSelected(_ image: UIImage?) {
-        guard let image = image else { return }
+        guard image != nil else { return }
         showingAddFriendAlert = true
     }
     
     func saveFriend() {
-        let friend = Friend(name: name)
+        guard let inputImage = inputImage else { return }
         
-        // TODO: Save friend to persistent storage
-        friends.append(friend)
+        let friend = Friend(name: name)
+        friends.saveFriend(friend, image: inputImage)
         
         resetValues()
     }
@@ -84,7 +95,6 @@ private extension ContentView {
     
     func removeItems(at offsets: IndexSet) {
         friends.remove(atOffsets: offsets)
-        // TODO: Remove friend from persistent storage
     }
 }
 
