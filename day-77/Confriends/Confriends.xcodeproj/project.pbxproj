@@ -13,7 +13,6 @@
 		A482FAD02AE60A6500992D49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A482FACF2AE60A6500992D49 /* Assets.xcassets */; };
 		A482FAD32AE60A6500992D49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A482FAD22AE60A6500992D49 /* Preview Assets.xcassets */; };
 		A482FADA2AE60A8800992D49 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482FAD92AE60A8800992D49 /* Friend.swift */; };
-		A482FADC2AE60D3B00992D49 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482FADB2AE60D3B00992D49 /* AddFriendView.swift */; };
 		A482FADE2AE60E9700992D49 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482FADD2AE60E9700992D49 /* FriendDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +24,6 @@
 		A482FACF2AE60A6500992D49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A482FAD22AE60A6500992D49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A482FAD92AE60A8800992D49 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		A482FADB2AE60D3B00992D49 /* AddFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 		A482FADD2AE60E9700992D49 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +59,6 @@
 			children = (
 				A482FACB2AE60A6400992D49 /* ConfriendsApp.swift */,
 				A482FACD2AE60A6400992D49 /* ContentView.swift */,
-				A482FADB2AE60D3B00992D49 /* AddFriendView.swift */,
 				A482FADD2AE60E9700992D49 /* FriendDetailView.swift */,
 				A482FAD92AE60A8800992D49 /* Friend.swift */,
 				A458B0DF2AE614A8008346DA /* ImagePicker.swift */,
@@ -153,7 +150,6 @@
 				A482FADA2AE60A8800992D49 /* Friend.swift in Sources */,
 				A482FACE2AE60A6400992D49 /* ContentView.swift in Sources */,
 				A458B0E02AE614A8008346DA /* ImagePicker.swift in Sources */,
-				A482FADC2AE60D3B00992D49 /* AddFriendView.swift in Sources */,
 				A482FACC2AE60A6400992D49 /* ConfriendsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
