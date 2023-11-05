@@ -11,6 +11,7 @@
 		A44AB7D22AF6F14D00775EDD /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44AB7D12AF6F14D00775EDD /* Friends.swift */; };
 		A458B0E02AE614A8008346DA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A458B0DF2AE614A8008346DA /* ImagePicker.swift */; };
 		A459ABF92AF857920006CC60 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459ABF82AF857920006CC60 /* LocationFetcher.swift */; };
+		A459ABFB2AF859390006CC60 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459ABFA2AF859390006CC60 /* Location.swift */; };
 		A482FACC2AE60A6400992D49 /* ConfriendsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482FACB2AE60A6400992D49 /* ConfriendsApp.swift */; };
 		A482FACE2AE60A6400992D49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482FACD2AE60A6400992D49 /* ContentView.swift */; };
 		A482FAD02AE60A6500992D49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A482FACF2AE60A6500992D49 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		A44AB7D12AF6F14D00775EDD /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A458B0DF2AE614A8008346DA /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = "../../../day-62/Instafilter/Instafilter/ImagePicker.swift"; sourceTree = "<group>"; };
 		A459ABF82AF857920006CC60 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		A459ABFA2AF859390006CC60 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A482FAC82AE60A6400992D49 /* Confriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Confriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A482FACB2AE60A6400992D49 /* ConfriendsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfriendsApp.swift; sourceTree = "<group>"; };
 		A482FACD2AE60A6400992D49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				A482FACD2AE60A6400992D49 /* ContentView.swift */,
 				A482FADD2AE60E9700992D49 /* FriendDetailView.swift */,
 				A482FAD92AE60A8800992D49 /* Friend.swift */,
+				A459ABFA2AF859390006CC60 /* Location.swift */,
 				A44AB7D12AF6F14D00775EDD /* Friends.swift */,
 				A458B0DF2AE614A8008346DA /* ImagePicker.swift */,
 				A44AB7CD2AF6EE6D00775EDD /* FileManager+Extensions.swift */,
@@ -159,6 +162,7 @@
 				A44AB7D22AF6F14D00775EDD /* Friends.swift in Sources */,
 				A459ABF92AF857920006CC60 /* LocationFetcher.swift in Sources */,
 				A482FADA2AE60A8800992D49 /* Friend.swift in Sources */,
+				A459ABFB2AF859390006CC60 /* Location.swift in Sources */,
 				A482FACE2AE60A6400992D49 /* ContentView.swift in Sources */,
 				A458B0E02AE614A8008346DA /* ImagePicker.swift in Sources */,
 				A482FACC2AE60A6400992D49 /* ConfriendsApp.swift in Sources */,

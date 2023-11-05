@@ -82,7 +82,9 @@ private extension ContentView {
     func saveFriend() {
         guard let inputImage = inputImage else { return }
         
-        let friend = Friend(name: name)
+        // TODO: Get location using LocationFetcher
+        let location = Location.example
+        let friend = Friend(name: name, location: location)
         friends.saveFriend(friend, image: inputImage)
         
         resetValues()
