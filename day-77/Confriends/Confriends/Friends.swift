@@ -19,15 +19,8 @@ class Friends: ObservableObject {
     }
     
     init() {
-        do {
-            let data = try Data(contentsOf: Self.friendsJSONSavePath)
-            friends = try JSONDecoder().decode([Friend].self, from: data)
-            friends.sort()
-        } catch {
-            print("Error loading friends JSON: \(error.localizedDescription)")
-            print("No such file error is expected until some friends have been saved")
-            friends = []
-        }
+        friends = FileManager.default.decodeFileFromDocuments(Self.friendsJSONSavePath.lastPathComponent) ?? []
+        friends.sort()
     }
     
     func image(for friend: Friend) -> UIImage? {

@@ -17,7 +17,7 @@ extension FileManager {
     func decodeFileFromDocuments<T: Decodable>(_ file: String) -> T? {
         let filePath = Self.documentsDirectory.appendingPathComponent(file)
         
-        guard let data = contents(atPath: filePath.absoluteString) else { return nil }
+        guard let data = contents(atPath: filePath.path) else { return nil }
         
         do {
             let decoded = try JSONDecoder().decode(T.self, from: data)
