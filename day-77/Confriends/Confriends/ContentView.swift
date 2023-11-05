@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     
+    private let locationFetcher = LocationFetcher()
+    
     var body: some View {
         NavigationView {
             Group {
@@ -48,6 +50,7 @@ struct ContentView: View {
             .navigationTitle("Confriends")
             .toolbar {
                 Button {
+                    locationFetcher.start()
                     showingImagePicker = true
                 } label: {
                     Image(systemName: "plus")
@@ -82,8 +85,8 @@ private extension ContentView {
     func saveFriend() {
         guard let inputImage = inputImage else { return }
         
-        // TODO: Get location using LocationFetcher
-        let location = Location.example
+        let lastKnownLocation = locationFetcher.lastKnownLocation
+        let location = lastKnownLocation.map { Location(latitude: $0.latitude, longitude: $0.longitude) }
         let friend = Friend(name: name, location: location)
         friends.saveFriend(friend, image: inputImage)
         
