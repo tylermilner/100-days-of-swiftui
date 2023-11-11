@@ -14,15 +14,22 @@ struct ProspectsView: View {
         case none, contacted, uncontacted
     }
     
+    enum FilterSort {
+        case name, mostRecent
+    }
+    
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
+    
+    @State private var filterSort: FilterSort = .name
+    @State private var isShowingSortDialog = false
     
     let filter: FilterType
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(sortedProspects) { prospect in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(prospect.name)
@@ -72,9 +79,32 @@ struct ProspectsView: View {
                 } label: {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
+                
+                Button {
+                    isShowingSortDialog = true
+                } label: {
+                    Label("Sort", systemImage: "arrow.up.arrow.down")
+                }
             }
             .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
+                // Add simulated data at random
+                let simulatedScans = [
+                    "John Doe\njohndoe@example.com",
+                    "Jane Doe\njanedoe@example.com",
+                    "Paul Hudson\npaul@hackingwithswift.com"
+                ]
+                let simulatedData = simulatedScans.randomElement()!
+                
+                CodeScannerView(codeTypes: [.qr], simulatedData: simulatedData, completion: handleScan)
+            }
+            .confirmationDialog("Sort", isPresented: $isShowingSortDialog) {
+                Button("Name") {
+                    filterSort = .name
+                }
+                
+                Button("Most Recent") {
+                    filterSort = .mostRecent
+                }
             }
         }
     }
@@ -98,6 +128,15 @@ struct ProspectsView: View {
             return prospects.people.filter { $0.isContacted }
         case .uncontacted:
             return prospects.people.filter { !$0.isContacted }
+        }
+    }
+    
+    var sortedProspects: [Prospect] {
+        switch filterSort {
+        case .name:
+            return filteredProspects.sorted { $0.name < $1.name }
+        case .mostRecent:
+            return filteredProspects.sorted { $0.dateAdded < $1.dateAdded }
         }
     }
     
