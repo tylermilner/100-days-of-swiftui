@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A46946982B01C8590071DB31 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46946972B01C8590071DB31 /* EditCards.swift */; };
 		A4BDA4F32B012FB9009B30E5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BDA4F22B012FB9009B30E5 /* Card.swift */; };
 		A4BDA4F52B013067009B30E5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BDA4F42B013067009B30E5 /* CardView.swift */; };
 		A4BEFCE42AFFFE3A0062ECFF /* FlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFCE32AFFFE3A0062ECFF /* FlashzillaApp.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A46946972B01C8590071DB31 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 		A4BDA4F22B012FB9009B30E5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A4BDA4F42B013067009B30E5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		A4BEFCE02AFFFE3A0062ECFF /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,7 @@
 				A4BEFCE32AFFFE3A0062ECFF /* FlashzillaApp.swift */,
 				A4BEFCE52AFFFE3A0062ECFF /* ContentView.swift */,
 				A4BDA4F22B012FB9009B30E5 /* Card.swift */,
+				A46946972B01C8590071DB31 /* EditCards.swift */,
 				A4BDA4F42B013067009B30E5 /* CardView.swift */,
 				A4BEFCE72AFFFE3B0062ECFF /* Assets.xcassets */,
 				A4BEFCE92AFFFE3B0062ECFF /* Preview Content */,
@@ -146,6 +149,7 @@
 				A4BEFCE62AFFFE3A0062ECFF /* ContentView.swift in Sources */,
 				A4BDA4F32B012FB9009B30E5 /* Card.swift in Sources */,
 				A4BDA4F52B013067009B30E5 /* CardView.swift in Sources */,
+				A46946982B01C8590071DB31 /* EditCards.swift in Sources */,
 				A4BEFCE42AFFFE3A0062ECFF /* FlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
