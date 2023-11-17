@@ -17,6 +17,7 @@ extension View {
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
+    @StateObject private var cardsData = Cards()
     @State private var cards = [Card]()
     
     @State private var timeRemaining = 100
@@ -151,14 +152,15 @@ struct ContentView: View {
                 isActive = false
             }
         }
-        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards, content: EditCards.init)
+        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
+            EditCards()
+                .environmentObject(cardsData)
+        }
         .onAppear(perform: resetCards)
     }
     
     func loadData() {
-        if let decoded: [Card] = FileManager.default.decodeFileFromDocuments("Cards.json") {
-            cards = decoded
-        }
+        cards = cardsData.cards
     }
     
     func removeCard(at index: Int) {

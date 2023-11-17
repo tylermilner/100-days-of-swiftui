@@ -9,9 +9,12 @@ import SwiftUI
 
 struct EditCards: View {
     @Environment(\.dismiss) var dismiss
-    @State private var cards = [Card]()
+    @EnvironmentObject var cardsData: Cards
+    
     @State private var newPrompt = ""
     @State private var newAnswer = ""
+    
+    private var cards: [Card] { cardsData.cards }
     
     var body: some View {
         NavigationView {
@@ -40,25 +43,11 @@ struct EditCards: View {
                 Button("Done", action: done)
             }
             .listStyle(.grouped)
-            .onAppear(perform: loadData)
         }
     }
     
     func done() {
         dismiss()
-    }
-    
-    func loadData() {
-        if let decoded: [Card] = FileManager.default.decodeFileFromDocuments("Cards.json") {
-            cards = decoded
-        }
-    }
-    
-    func saveData() {
-        if let data = try? JSONEncoder().encode(cards) {
-            let saveURL = FileManager.documentsDirectory.appendingPathComponent("Cards.json")
-            try? data.write(to: saveURL, options: [.atomic, .completeFileProtection])
-        }
     }
     
     func addCard() {
@@ -67,16 +56,14 @@ struct EditCards: View {
         guard trimmedPrompt.isEmpty == false && trimmedAnswer.isEmpty == false else { return }
         
         let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
-        cards.insert(card, at: 0)
-        saveData()
+        cardsData.addCard(card)
         
         newPrompt = ""
         newAnswer = ""
     }
     
     func removeCards(at offsets: IndexSet) {
-        cards.remove(atOffsets: offsets)
-        saveData()
+        cardsData.removeCards(at: offsets)
     }
 }
 
