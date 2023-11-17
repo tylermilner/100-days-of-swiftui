@@ -49,16 +49,15 @@ struct EditCards: View {
     }
     
     func loadData() {
-        if let data = UserDefaults.standard.data(forKey: "Cards") {
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
+        if let decoded: [Card] = FileManager.default.decodeFileFromDocuments("Cards.json") {
+            cards = decoded
         }
     }
     
     func saveData() {
         if let data = try? JSONEncoder().encode(cards) {
-            UserDefaults.standard.set(data, forKey: "Cards")
+            let saveURL = FileManager.documentsDirectory.appendingPathComponent("Cards.json")
+            try? data.write(to: saveURL, options: [.atomic, .completeFileProtection])
         }
     }
     

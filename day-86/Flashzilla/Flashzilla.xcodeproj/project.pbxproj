@@ -14,6 +14,7 @@
 		A4BEFCE62AFFFE3A0062ECFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFCE52AFFFE3A0062ECFF /* ContentView.swift */; };
 		A4BEFCE82AFFFE3B0062ECFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BEFCE72AFFFE3B0062ECFF /* Assets.xcassets */; };
 		A4BEFCEB2AFFFE3B0062ECFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BEFCEA2AFFFE3B0062ECFF /* Preview Assets.xcassets */; };
+		A4F47CAE2B071B5300A55623 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F47CAD2B071B5300A55623 /* FileManager+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A4BEFCE52AFFFE3A0062ECFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A4BEFCE72AFFFE3B0062ECFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4BEFCEA2AFFFE3B0062ECFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A4F47CAD2B071B5300A55623 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				A4BDA4F22B012FB9009B30E5 /* Card.swift */,
 				A46946972B01C8590071DB31 /* EditCards.swift */,
 				A4BDA4F42B013067009B30E5 /* CardView.swift */,
+				A4F47CAD2B071B5300A55623 /* FileManager+Extensions.swift */,
 				A4BEFCE72AFFFE3B0062ECFF /* Assets.xcassets */,
 				A4BEFCE92AFFFE3B0062ECFF /* Preview Content */,
 			);
@@ -151,6 +154,7 @@
 				A4BDA4F52B013067009B30E5 /* CardView.swift in Sources */,
 				A46946982B01C8590071DB31 /* EditCards.swift in Sources */,
 				A4BEFCE42AFFFE3A0062ECFF /* FlashzillaApp.swift in Sources */,
+				A4F47CAE2B071B5300A55623 /* FileManager+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

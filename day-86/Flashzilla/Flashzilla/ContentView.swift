@@ -156,10 +156,8 @@ struct ContentView: View {
     }
     
     func loadData() {
-        if let data = UserDefaults.standard.data(forKey: "Cards") {
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
+        if let decoded: [Card] = FileManager.default.decodeFileFromDocuments("Cards.json") {
+            cards = decoded
         }
     }
     
