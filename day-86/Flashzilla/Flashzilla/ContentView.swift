@@ -43,10 +43,21 @@ struct ContentView: View {
                     .clipShape(Capsule())
                 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
+                    ForEach(cards) { card in
+                        let index = cards.firstIndex { $0.id == card.id }!
+                        
+                        CardView(card: card) {
                             withAnimation {
                                 removeCard(at: index)
+                            }
+                        } removalWrong: {
+                            withAnimation {
+                                removeCard(at: index)
+                                
+                                // Re-insert as a new card to ensure the list re-renders
+                                var card = card
+                                card.id = UUID()
+                                insertCardAtFront(card)
                             }
                         }
                         .stacked(at: index, in: cards.count)
@@ -160,6 +171,13 @@ struct ContentView: View {
         if cards.isEmpty {
             isActive = false
         }
+    }
+    
+    func insertCardAtFront(_ card: Card) {
+        cards.insert(card, at: 0)
+        
+        // Prevent the timer from stopping if there is only 1 card left
+        isActive = true
     }
     
     func resetCards() {
