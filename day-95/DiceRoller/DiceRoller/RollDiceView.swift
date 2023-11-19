@@ -10,18 +10,49 @@ import SwiftUI
 struct RollDiceView: View {
     @EnvironmentObject private var diceRolls: DiceRolls
     
-    private let dice = Dice()
+    @State private var numberOfDice = 1
+    @State private var numberOfSidesPerDice = diceSizes.first!
+    
+    private static let diceSizes = [4, 6, 8, 10, 12, 20, 100]
+    
+    private var dice: [Dice] {
+        return Array(repeating: Dice(numberOfSides: numberOfSidesPerDice), count: numberOfDice)
+    }
     
     var body: some View {
         NavigationView {
-            VStack {
-                if let lastRoll = diceRolls.lastRoll {
-                    Text("\(lastRoll.value)")
+            Form {
+                Section("Options") {
+                    Stepper("\(numberOfDice) dice", value: $numberOfDice, in: 1...10)
+                    
+                    Picker(selection: $numberOfSidesPerDice) {
+                        ForEach(Self.diceSizes, id: \.self) { diceSize in
+                            Text("\(diceSize)")
+                        }
+                    } label: {
+                        Text("\(numberOfSidesPerDice) sided")
+                    }
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button("Roll") {
+                            let roll = DiceRoll(dice: dice)
+                            diceRolls.add(roll)
+                        }
+                        
+                        Spacer()
+                    }
                 }
                 
-                Button("Roll") {
-                    let roll = dice.roll()
-                    diceRolls.add(roll)
+                if let lastRoll = diceRolls.lastRoll {
+                    Section("Result") {
+                        ForEach(0..<lastRoll.numberOfDiceRolled, id: \.self) { index in
+                            let rollValue = lastRoll.rollValues[index]
+                            Text("\(rollValue)")
+                                .font(.title)
+                        }
+                    }
                 }
             }
             .navigationTitle("DiceRoller")

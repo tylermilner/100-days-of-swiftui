@@ -8,9 +8,9 @@
 import Foundation
 
 struct Dice {
-    let numberOfSides = 6
+    let numberOfSides: Int
     
-    func roll() -> DiceRoll {
-        return DiceRoll(dice: self)
+    func roll() -> Int {
+        return Int.random(in: 1...numberOfSides)
     }
 }
