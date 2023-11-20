@@ -15,6 +15,14 @@ struct RollDiceView: View {
     
     @State private var feedback = UINotificationFeedbackGenerator()
     
+    @State private var timerRollsRemaining = 0
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @Environment(\.scenePhase) var scenePhase
+    @State private var isActive = true
+    
+    @State private var lastRoll: DiceRoll?
+    
     private static let diceSizes = [4, 6, 8, 10, 12, 20, 100]
     
     private var dice: [Dice] {
@@ -40,15 +48,14 @@ struct RollDiceView: View {
                         
                         Button("Roll") {
                             feedback.notificationOccurred(.success)
-                            let roll = DiceRoll(dice: dice)
-                            diceRolls.add(roll)
+                            startTimer()
                         }
                         
                         Spacer()
                     }
                 }
                 
-                if let lastRoll = diceRolls.lastRoll {
+                if let lastRoll = lastRoll {
                     Section("Total") {
                         Text("\(lastRoll.total)")
                             .font(.largeTitle)
@@ -65,6 +72,38 @@ struct RollDiceView: View {
             }
             .navigationTitle("DiceRoller")
         }
+        .onReceive(timer) { time in
+            guard isActive else { return }
+            
+            let roll = DiceRoll(dice: dice)
+            lastRoll = roll
+            
+            if timerRollsRemaining > 0 {
+                timerRollsRemaining -= 1
+            } else {
+                stopTimer()
+                diceRolls.add(roll)
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                isActive = true
+            } else {
+                isActive = false
+            }
+        }
+        .onAppear {
+            stopTimer()
+        }
+    }
+    
+    private func startTimer() {
+        timerRollsRemaining = 10
+        timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    }
+    
+    private func stopTimer() {
+        timer.upstream.connect().cancel()
     }
 }
 
