@@ -24,7 +24,9 @@ struct PreviousRollsView: View {
                                 .font(.subheadline)
                         }
                     }
+                    .accessibilityElement(children: roll.rollValues.count > 1 ? .combine : .ignore)
                 }
+                .accessibilityElement(children: .combine)
             }
             .navigationTitle("Previous Rolls")
         }
