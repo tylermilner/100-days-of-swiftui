@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DiceRoll: Identifiable {
+struct DiceRoll: Codable, Identifiable {
     var id = UUID()
     let rollValues: [Int]
     

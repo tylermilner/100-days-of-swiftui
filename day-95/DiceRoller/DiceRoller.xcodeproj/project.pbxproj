@@ -16,6 +16,7 @@
 		A49A35032B097CBC00DCB12D /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A35022B097CBC00DCB12D /* Dice.swift */; };
 		A49A35052B097CFD00DCB12D /* DiceRoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A35042B097CFD00DCB12D /* DiceRoll.swift */; };
 		A49A35072B09803F00DCB12D /* DiceRolls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A35062B09803F00DCB12D /* DiceRolls.swift */; };
+		A4ACE0AB2B0AFC1300386E69 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ACE0AA2B0AFC1300386E69 /* FileManager+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		A49A35022B097CBC00DCB12D /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		A49A35042B097CFD00DCB12D /* DiceRoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRoll.swift; sourceTree = "<group>"; };
 		A49A35062B09803F00DCB12D /* DiceRolls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRolls.swift; sourceTree = "<group>"; };
+		A4ACE0AA2B0AFC1300386E69 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				A49A35022B097CBC00DCB12D /* Dice.swift */,
 				A49A35042B097CFD00DCB12D /* DiceRoll.swift */,
 				A49A35062B09803F00DCB12D /* DiceRolls.swift */,
+				A4ACE0AA2B0AFC1300386E69 /* FileManager+Extensions.swift */,
 				A49A34F42B09793100DCB12D /* Assets.xcassets */,
 				A49A34F62B09793100DCB12D /* Preview Content */,
 			);
@@ -157,6 +160,7 @@
 				A49A35072B09803F00DCB12D /* DiceRolls.swift in Sources */,
 				A49A34F32B09792F00DCB12D /* ContentView.swift in Sources */,
 				A49A35032B097CBC00DCB12D /* Dice.swift in Sources */,
+				A4ACE0AB2B0AFC1300386E69 /* FileManager+Extensions.swift in Sources */,
 				A49A35012B097C8B00DCB12D /* PreviousRollsView.swift in Sources */,
 				A49A34F12B09792F00DCB12D /* DiceRollerApp.swift in Sources */,
 			);
