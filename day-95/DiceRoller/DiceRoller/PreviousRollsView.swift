@@ -13,10 +13,16 @@ struct PreviousRollsView: View {
     var body: some View {
         NavigationView {
             List(diceRolls.rolls) { roll in
-                HStack {
-                    ForEach(0..<roll.numberOfDiceRolled, id: \.self) { index in
-                        let rollValue = roll.rollValues[index]
-                        Text("\(rollValue)")
+                VStack(alignment: .leading) {
+                    Text("\(roll.total)")
+                        .font(.headline)
+                    
+                    HStack {
+                        ForEach(0..<roll.numberOfDiceRolled, id: \.self) { index in
+                            let rollValue = roll.rollValues[index]
+                            Text("\(rollValue)")
+                                .font(.subheadline)
+                        }
                     }
                 }
             }

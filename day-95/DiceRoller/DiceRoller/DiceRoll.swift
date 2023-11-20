@@ -15,6 +15,16 @@ struct DiceRoll: Identifiable {
         rollValues.count
     }
     
+    var total: Int {
+        var total = 0
+        
+        for value in rollValues {
+            total += value
+        }
+        
+        return total
+    }
+    
     init(dice: [Dice]) {
         var rollValues = [Int]()
         

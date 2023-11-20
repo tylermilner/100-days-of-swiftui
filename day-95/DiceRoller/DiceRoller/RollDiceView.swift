@@ -46,7 +46,12 @@ struct RollDiceView: View {
                 }
                 
                 if let lastRoll = diceRolls.lastRoll {
-                    Section("Result") {
+                    Section("Total") {
+                        Text("\(lastRoll.total)")
+                            .font(.largeTitle)
+                    }
+                    
+                    Section("Rolls") {
                         ForEach(0..<lastRoll.numberOfDiceRolled, id: \.self) { index in
                             let rollValue = lastRoll.rollValues[index]
                             Text("\(rollValue)")
