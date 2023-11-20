@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RollDiceView: View {
     @EnvironmentObject private var diceRolls: DiceRolls
+    @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
+    @Environment(\.accessibilityReduceMotion) var reduceMotionEnabled
     
     @State private var numberOfDice = 1
     @State private var numberOfSidesPerDice = diceSizes.first!
@@ -48,7 +50,13 @@ struct RollDiceView: View {
                         
                         Button("Roll") {
                             feedback.notificationOccurred(.success)
-                            startTimer()
+                            
+                            if voiceOverEnabled || reduceMotionEnabled {
+                                rollDice()
+                                saveRoll()
+                            } else {
+                                startTimer()
+                            }
                         }
                         
                         Spacer()
@@ -75,14 +83,13 @@ struct RollDiceView: View {
         .onReceive(timer) { time in
             guard isActive else { return }
             
-            let roll = DiceRoll(dice: dice)
-            lastRoll = roll
+            rollDice()
             
             if timerRollsRemaining > 0 {
                 timerRollsRemaining -= 1
             } else {
                 stopTimer()
-                diceRolls.add(roll)
+                saveRoll()
             }
         }
         .onChange(of: scenePhase) { newPhase in
@@ -95,6 +102,16 @@ struct RollDiceView: View {
         .onAppear {
             stopTimer()
         }
+    }
+    
+    private func rollDice() {
+        let roll = DiceRoll(dice: dice)
+        lastRoll = roll
+    }
+    
+    private func saveRoll() {
+        guard let roll = lastRoll else { return }
+        diceRolls.add(roll)
     }
     
     private func startTimer() {
