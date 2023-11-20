@@ -13,6 +13,8 @@ struct RollDiceView: View {
     @State private var numberOfDice = 1
     @State private var numberOfSidesPerDice = diceSizes.first!
     
+    @State private var feedback = UINotificationFeedbackGenerator()
+    
     private static let diceSizes = [4, 6, 8, 10, 12, 20, 100]
     
     private var dice: [Dice] {
@@ -37,6 +39,7 @@ struct RollDiceView: View {
                         Spacer()
                         
                         Button("Roll") {
+                            feedback.notificationOccurred(.success)
                             let roll = DiceRoll(dice: dice)
                             diceRolls.add(roll)
                         }
